@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beni Affet Lütfen ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-width: 600px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        h1 {
+            color: #d63384;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .letter {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #ff6b81;
+            text-align: left;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            min-height: 120px;
+        }
+        button {
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-yes {
+            background-color: #2ed573;
+        }
+        .btn-yes:hover {
+            background-color: #26af5f;
+        }
+        .btn-no {
+            background-color: #ff4757;
+        }
+        .btn-no:hover {
+            background-color: #eccc68;
+        }
+        .success-message {
+            display: none;
+        }
+        .success-message h2 {
+            color: #2ed573;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .success-message p {
+            font-size: 1.3rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <div class="emoji">🥺💔</div>
+        <h1>Çok Çok Özür Dilerim...</h1>
+        
+        <div class="letter">
+            <p>Seni kırdığım veya üzdüğüm için gerçekten çok pişmanım. Bazen istemeden hatalar yapabiliyorum ama senin hislerin benim için her şeyden önemli.</p>
+            <br>
+            <p>Beni bağışlaman ve bana bir şans daha vermen benim için dünyalara bedel. Lütfen kalbinde bana küçük bir affetme payı bırak...</p>
+        </div>
+
+        <div class="buttons-container" id="btnGroup">
+            <button class="btn-yes" id="yesBtn" onclick="accept()">Affet</button>
+            <button class="btn-no" id="noBtn" onclick="refuse()">Affetme</button>
+        </div>
+    </div>
+
+    <script>
+        let yesScale = 1;
+        let noClicks = 0;
+
+        const refuseTexts = [
+            "Affetme",
+            "Emin misin?",
+            "Lütfen bir daha düşün...",
+            "Gerçekten mi?",
+            "Kalbimi kırıyorsun 💔",
+            "Bak yeşil buton ne kadar büyüdü!",
+            "Son kararın mı?",
+            "Hadi ama, lütfen!",
+            "Tıkla artık yeşile 🥺"
+        ];
+
+        function refuse() {
+            noClicks++;
+            
+            // Yeşil butonu büyüt
+            yesScale += 0.45;
+            const yesBtn = document.getElementById('yesBtn');
+            yesBtn.style.transform = `scale(${yesScale})`;
+
+            // Kırmızı butonun yazısını değiştir
+            const noBtn = document.getElementById('noBtn');
+            const textIndex = Math.min(noClicks, refuseTexts.length - 1);
+            noBtn.innerText = refuseTexts[textIndex];
+        }
+
+        function accept() {
+            const container = document.getElementById('mainContainer');
+            container.innerHTML = `
+                <div class="success-message" style="display:block;">
+                    <div class="emoji">🎉❤️🥰</div>
+                    <h2>ŞİMDİNDEN BENİ AFFETTİN!</h2>
+                    <p>Çok teşekkür ederim! Seni bir daha asla üzmeyeceğime söz veriyorum! ❤️✨</p>
+                </div>
+            `;
+        }
+    </script>
+
+</body>
+</html>
